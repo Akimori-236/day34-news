@@ -1,0 +1,29 @@
+<div class="container border">
+  <form [formGroup]="getNewsForm" (ngSubmit)="searchNews()">
+    <table>
+      <tr>
+        <td>
+          <p class="form-label">Countries</p>
+        </td>
+        <td>
+          <select class="form-select" formControlName="country">
+            <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="form-label">Category</p>
+        </td>
+        <td>
+          <select class="form-select" formControlName="category" >
+            <option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-danger" type="submit">Get News</button>
+    </div>
+  </form>
+</div>

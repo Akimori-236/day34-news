@@ -1,0 +1,10 @@
+<div class="container">
+  <table>
+    <tr class="border border-dark my-2" *ngFor="let art of articles">
+      <td>
+        <span>{{ art.name }}</span><br>
+        <a href="{{ art.url }}">{{ art.description }}</a>
+      </td>
+    </tr>
+  </table>
+</div>
