@@ -4,12 +4,12 @@ import { firstValueFrom, Observable, Subject } from "rxjs";
 import { Article, SearchTerms } from "./models";
 
 const NEWS_URL = "https://newsapi.org/v2/top-headlines/sources"
-const APIKEY = "**************"
+const APIKEY = ""
 
 @Injectable()
 export class NewsService {
 
-    onNews = new Subject<Article[]>()
+    onNews = new Subject<Article[]>
 
     constructor(private http: HttpClient) { }
 
