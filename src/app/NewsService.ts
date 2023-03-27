@@ -3,8 +3,9 @@ import { Injectable } from "@angular/core";
 import { firstValueFrom, Observable, Subject } from "rxjs";
 import { Article, SearchTerms } from "./models";
 
-const NEWS_URL = "https://newsapi.org/v2/top-headlines/sources"
-const APIKEY = "**************"
+// const NEWS_URL = "https://newsapi.org/v2/top-headlines/sources"
+const NEWS_URL = "localhost:8080/api"
+
 
 @Injectable()
 export class NewsService {
@@ -14,12 +15,14 @@ export class NewsService {
     constructor(private http: HttpClient) { }
 
     getNewsObs(s: SearchTerms): Observable<Article[]> {
-        const params = new HttpParams()
-            .set('country', s.country)
-            .set('category', s.category)
-            .set('apiKey', APIKEY)
 
-        return this.http.get<Article[]>(NEWS_URL, { params })
+        // destructuring - splitting object up into individual variables
+        const { country, category } = s
+
+        const params = new HttpParams()
+            .set('pageSize', 10)
+
+        return this.http.get<Article[]>(`${NEWS_URL}/${country}/${category}`, { params })
             .pipe()
     }
 
@@ -39,5 +42,19 @@ export class NewsService {
             .catch((error) => {
                 alert("Error >>> " + error)
             })
+    }
+
+    // NAVIGATOR CAN SHARE
+    canShare(): boolean {
+        return navigator.canShare()
+    }
+
+    share(text: string) {
+        navigator.share({
+            title: "new News",
+            text: text,                                  
+        })
+            .then()
+            .catch(error => alert(error))
     }
 }
