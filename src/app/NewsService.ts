@@ -3,14 +3,8 @@ import { Injectable } from "@angular/core";
 import { firstValueFrom, Observable, Subject } from "rxjs";
 import { Article, SearchTerms } from "./models";
 
-<<<<<<< HEAD
-// const NEWS_URL = "https://newsapi.org/v2/top-headlines/sources"
-const NEWS_URL = "localhost:8080/api"
-
-=======
 const NEWS_URL = "https://newsapi.org/v2/top-headlines/sources"
 const APIKEY = ""
->>>>>>> 889064afc7f4068fae752e02be4211b79d7a1b90
 
 @Injectable()
 export class NewsService {
@@ -57,7 +51,7 @@ export class NewsService {
     share(text: string) {
         navigator.share({
             title: "new News",
-            text: text,                                  
+            text: text,
         })
             .then()
             .catch(error => alert(error))
