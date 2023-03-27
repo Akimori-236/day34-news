@@ -10,7 +10,7 @@ const COUNTRY_URL = "https://restcountries.com/v3.1/alpha"
 @Injectable()
 export class CountryService {
 
-    onCountries = new Subject<string[]>()
+    onCountries = new Subject<string[]>
 
     constructor(private http: HttpClient) { }
 
